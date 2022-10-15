@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<head>
+    <title>誰是大賭徒</title>
+    <link rel="icon" href="./cow.ico">
+</head>
+
+<body>
+    <div id="現在金額"><img src="./dollar.png" id="dollar"> <span id="nowmoney"></span></div>
+    <span>賭多少錢 : </span><input id="money"><button onmousedown="enter1()">確定</button>
+    <h4><img src="./coins.png"> 您下注<span id="moneycheck">0</span><span id="aaa">元</span></h4>
+    <h2>請輸入四位數字<input id="input"><button onmousedown="enter2()">送出</button><br></h2>
+    <h4>猜測次數 : <span id="number">0</span><span>次</span></h4>
+
+    <script>
+        //mc=使用者輸入下多少錢      a=使用者輸入猜的數字     A、B分別為中多少A多少B      a1=a的第一位數      ans1=答案的第一位數     number=猜的次數     nowmon=使用者現在擁有的金額
+        let nowmon
+        if (nowmon == '') {
+            nowmon = 100;
+        }
+        else {
+            nowmon = localStorage.getItem('usermoney');
+        }
+        nowmon = Number(nowmon);
+
+        document.getElementById('nowmoney').innerHTML = nowmon;
+        console.log('您有' + nowmon + '元');
+        function getRandom(x) {
+            return Math.floor(Math.random() * x);
+        }
+        function enter1() {
+            mc = document.getElementById("money").value;
+            mc = Number(mc);
+            console.log("您賭" + mc + "元");
+            document.getElementById('money').setAttribute('readonly', 'readonly');
+            document.getElementById("moneycheck").innerHTML = mc;
+        }
+        function enter2() {
+            number += 1;
+            document.getElementById("number").innerHTML = number;
+            let A = 0, B = 0;
+            a = document.getElementById("input").value; //a=輸入的值
+            console.log("您輸入 " + a);
+            //document.getElementById("AB").innerHTML = a;
+            a1 = a[0];
+            a2 = a[1];
+            a3 = a[2];
+            a4 = a[3];
+            console.log("答案 " + ans1 + ans2 + ans3 + ans4)
+            document.getElementById("input").value = "";
+            if (a1 == ans1) {
+                A += 1;
+                B--;
+            }
+            if (a2 == ans2) {
+                A += 1;
+                B--;
+            }
+            if (a3 == ans3) {
+                A += 1;
+                B--;
+            }
+            if (a4 == ans4) {
+                A += 1;
+                B--;
+            }
+            if (a1 == ans1 || a1 == ans2 || a1 == ans3 || a1 == ans4) {
+                B++;
+            }
+            if (a2 == ans1 || a2 == ans2 || a2 == ans3 || a2 == ans4) {
+                B++;
+            }
+            if (a3 == ans1 || a3 == ans2 || a3 == ans3 || a3 == ans4) {
+                B++;
+            }
+            if (a4 == ans1 || a4 == ans2 || a4 == ans3 || a4 == ans4) {
+                B++;
+            }
+            console.log(A + "A" + B + "B");
+
+            var x = document.createElement("h3");
+            var t = document.createTextNode(a + '\xa0\xa0\xa0\xa0\xa0\xa0');
+            x.className = "ABclass"
+            x.appendChild(t);
+            document.body.appendChild(x);
+
+            var x = document.createElement("h3");
+            if (A == 4) {
+                var t = document.createTextNode("恭喜答對");
+                x.className = "ABclass"
+                x.appendChild(t);
+                document.body.appendChild(x);//停止程式
+                if (number <= 3) {
+                    nowmon = nowmon + mc * 2;
+                    document.getElementById("nowmoney").innerHTML = nowmon;
+                }
+                else if (number <= 5) {
+                    nowmon = nowmon + mc;
+                    document.getElementById("nowmoney").innerHTML = nowmon;
+
+                }
+                else if (number == 6) {
+
+                    document.getElementById("nowmoney").innerHTML = nowmon;
+
+                }
+
+                document.getElementById('money').removeAttribute('readonly');
+                localStorage.setItem('usermoney', nowmon);
+                window.alert('恭喜答對');
+                document.write("您現在有" + nowmon + "元\n");
+                document.write("請重整頁面重新開始遊戲");
+                return;//重新開始
+            }
+            else {
+                var t = document.createTextNode(A + "A" + B + "B");
+                x.className = "ABclass"
+                x.appendChild(t);
+                document.body.appendChild(x);
+
+                var x = document.createElement("br");
+                x.className = "ABclass"
+                document.body.appendChild(x);
+            }
+
+            if (number == 7) {
+                nowmon = nowmon - mc;
+                document.getElementById("nowmoney").innerHTML = nowmon;
+                localStorage.setItem('usermoney', nowmon);
+            }
+
+
+            //document.getElementById("AB2").innerHTML = + " " + A + "A" + B + "B";
+        }
+        var a = '';
+        let number = 0;   //猜題次數
+        let ans1 = 0, ans2 = 0, ans3 = 0, ans4 = 0; //answer
+        ans1 = getRandom(10);
+        while (ans1 == 0) {
+            ans1 = getRandom(10);
+        }
+        ans2 = getRandom(10);
+        while (ans1 == ans2) {
+            ans2 = getRandom(10);
+        }
+        ans3 = getRandom(10);
+        while (ans3 == ans2 || ans3 == ans1) {
+            ans3 = getRandom(10);
+        }
+        ans4 = getRandom(10);
+        while (ans4 == ans3 || ans4 == ans2 || ans4 == ans1) {
+            ans4 = getRandom(10);//int
+        }
+        ans1 = String(ans1)
+        ans2 = String(ans2)
+        ans3 = String(ans3)
+        ans4 = String(ans4)
+
+        let a1, a2, a3, a4;
+
+
+    </script>
+    <style>
+        h3 {
+            font-size: 36px;
+            color: rgb(138, 9, 250);
+            display: inline;
+        }
+
+        #現在金額 {
+            text-align: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        img {
+            width: 2.4%;
+
+        }
+    </style>
+</body>
+<!--1.另開網頁介紹遊戲
+    2.遊戲中止document.write button或跳出談窗遊戲結束-->
