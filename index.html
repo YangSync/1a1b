@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 
 <head>
-    <title>½Ö¬O¤j½ä®{</title>
+    <title>èª°æ˜¯å¤§è³­å¾’</title>
     <link rel="icon" href="./cow.ico">
 </head>
 
 <body>
-    <div id="²{¦bª÷ÃB"><img src="./dollar.png" id="dollar"> <span id="nowmoney"></span></div>
-    <span>½ä¦h¤Ö¿ú : </span><input id="money"><button onmousedown="enter1()">½T©w</button>
-    <h4><img src="./coins.png"> ±z¤Uª`<span id="moneycheck">0</span><span id="aaa">¤¸</span></h4>
-    <h2>½Ğ¿é¤J¥|¦ì¼Æ¦r<input id="input"><button onmousedown="enter2()">°e¥X</button><br></h2>
-    <h4>²q´ú¦¸¼Æ : <span id="number">0</span><span>¦¸</span></h4>
+    <div id="ç¾åœ¨é‡‘é¡"><img src="./dollar.png" id="dollar"> <span id="nowmoney"></span></div>
+    <span>è³­å¤šå°‘éŒ¢ : </span><input id="money"><button onmousedown="enter1()">ç¢ºå®š</button>
+    <h4><img src="./coins.png"> æ‚¨ä¸‹æ³¨<span id="moneycheck">0</span><span id="aaa">å…ƒ</span></h4>
+    <h2>è«‹è¼¸å…¥å››ä½æ•¸å­—<input id="input"><button onmousedown="enter2()">é€å‡º</button><br></h2>
+    <h4>çŒœæ¸¬æ¬¡æ•¸ : <span id="number">0</span><span>æ¬¡</span></h4>
 
     <script>
-        //mc=¨Ï¥ÎªÌ¿é¤J¤U¦h¤Ö¿ú      a=¨Ï¥ÎªÌ¿é¤J²qªº¼Æ¦r     A¡BB¤À§O¬°¤¤¦h¤ÖA¦h¤ÖB      a1=aªº²Ä¤@¦ì¼Æ      ans1=µª®×ªº²Ä¤@¦ì¼Æ     number=²qªº¦¸¼Æ     nowmon=¨Ï¥ÎªÌ²{¦b¾Ö¦³ªºª÷ÃB
+        //mc=ä½¿ç”¨è€…è¼¸å…¥ä¸‹å¤šå°‘éŒ¢      a=ä½¿ç”¨è€…è¼¸å…¥çŒœçš„æ•¸å­—     Aã€Båˆ†åˆ¥ç‚ºä¸­å¤šå°‘Aå¤šå°‘B      a1=açš„ç¬¬ä¸€ä½æ•¸      ans1=ç­”æ¡ˆçš„ç¬¬ä¸€ä½æ•¸     number=çŒœçš„æ¬¡æ•¸     nowmon=ä½¿ç”¨è€…ç¾åœ¨æ“æœ‰çš„é‡‘é¡
         let nowmon
         if (nowmon == '') {
             nowmon = 100;
@@ -24,14 +24,14 @@
         nowmon = Number(nowmon);
 
         document.getElementById('nowmoney').innerHTML = nowmon;
-        console.log('±z¦³' + nowmon + '¤¸');
+        console.log('æ‚¨æœ‰' + nowmon + 'å…ƒ');
         function getRandom(x) {
             return Math.floor(Math.random() * x);
         }
         function enter1() {
             mc = document.getElementById("money").value;
             mc = Number(mc);
-            console.log("±z½ä" + mc + "¤¸");
+            console.log("æ‚¨è³­" + mc + "å…ƒ");
             document.getElementById('money').setAttribute('readonly', 'readonly');
             document.getElementById("moneycheck").innerHTML = mc;
         }
@@ -39,14 +39,14 @@
             number += 1;
             document.getElementById("number").innerHTML = number;
             let A = 0, B = 0;
-            a = document.getElementById("input").value; //a=¿é¤Jªº­È
-            console.log("±z¿é¤J " + a);
+            a = document.getElementById("input").value; //a=è¼¸å…¥çš„å€¼
+            console.log("æ‚¨è¼¸å…¥ " + a);
             //document.getElementById("AB").innerHTML = a;
             a1 = a[0];
             a2 = a[1];
             a3 = a[2];
             a4 = a[3];
-            console.log("µª®× " + ans1 + ans2 + ans3 + ans4)
+            console.log("ç­”æ¡ˆ " + ans1 + ans2 + ans3 + ans4)
             document.getElementById("input").value = "";
             if (a1 == ans1) {
                 A += 1;
@@ -86,10 +86,10 @@
 
             var x = document.createElement("h3");
             if (A == 4) {
-                var t = document.createTextNode("®¥³ßµª¹ï");
+                var t = document.createTextNode("æ­å–œç­”å°");
                 x.className = "ABclass"
                 x.appendChild(t);
-                document.body.appendChild(x);//°±¤îµ{¦¡
+                document.body.appendChild(x);//åœæ­¢ç¨‹å¼
                 if (number <= 3) {
                     nowmon = nowmon + mc * 2;
                     document.getElementById("nowmoney").innerHTML = nowmon;
@@ -107,10 +107,10 @@
 
                 document.getElementById('money').removeAttribute('readonly');
                 localStorage.setItem('usermoney', nowmon);
-                window.alert('®¥³ßµª¹ï');
-                document.write("±z²{¦b¦³" + nowmon + "¤¸\n");
-                document.write("½Ğ­«¾ã­¶­±­«·s¶}©l¹CÀ¸");
-                return;//­«·s¶}©l
+                window.alert('æ­å–œç­”å°');
+                document.write("æ‚¨ç¾åœ¨æœ‰" + nowmon + "å…ƒ\n");
+                document.write("è«‹é‡æ•´é é¢é‡æ–°é–‹å§‹éŠæˆ²");
+                return;//é‡æ–°é–‹å§‹
             }
             else {
                 var t = document.createTextNode(A + "A" + B + "B");
@@ -133,7 +133,7 @@
             //document.getElementById("AB2").innerHTML = + " " + A + "A" + B + "B";
         }
         var a = '';
-        let number = 0;   //²qÃD¦¸¼Æ
+        let number = 0;   //çŒœé¡Œæ¬¡æ•¸
         let ans1 = 0, ans2 = 0, ans3 = 0, ans4 = 0; //answer
         ans1 = getRandom(10);
         while (ans1 == 0) {
@@ -167,7 +167,7 @@
             display: inline;
         }
 
-        #²{¦bª÷ÃB {
+        #ç¾åœ¨é‡‘é¡ {
             text-align: right;
             font-size: 28px;
             font-weight: bold;
@@ -179,5 +179,5 @@
         }
     </style>
 </body>
-<!--1.¥t¶}ºô­¶¤¶²Ğ¹CÀ¸
-    2.¹CÀ¸¤¤¤îdocument.write button©Î¸õ¥X½Íµ¡¹CÀ¸µ²§ô-->
+<!--1.å¦é–‹ç¶²é ä»‹ç´¹éŠæˆ²
+    2.éŠæˆ²ä¸­æ­¢document.write buttonæˆ–è·³å‡ºè«‡çª—éŠæˆ²çµæŸ-->
