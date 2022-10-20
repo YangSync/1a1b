@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 
 <head>
-    <title>誰是大賭徒</title>
+    <title>Big gambler</title>
     <link rel="icon" href="./cow.ico">
 </head>
 
 <body>
-    <div id="現在金額"><img src="./dollar.png" id="dollar"> <span id="nowmoney"></span></div>
-    <span>賭多少錢 : </span><input id="money"><button onmousedown="enter1()">確定</button>
-    <h4><img src="./coins.png"> 您下注<span id="moneycheck">0</span><span id="aaa">元</span></h4>
-    <h2>請輸入四位數字<input id="input"><button onmousedown="enter2()">送出</button><br></h2>
-    <h4>猜測次數 : <span id="number">0</span><span>次</span></h4>
+    <div id="moneying"><img src="./dollar.png" id="dollar"> <span id="nowmoney"></span></div>
+    <span>How much do you want to bet : </span><input id="money"><button onmousedown="enter1()">enter</button>
+    <h4><img src="./coins.png"> You bet <span id="moneycheck">0</span><span id="aaa"> dollar</span></h4>
+    <h2>Please enter four digits <input id="input"><button onmousedown="enter2()">send</button><br></h2>
+    <h4>number of guesses : <span id="number">0</span><span> times</span></h4>
 
     <script>
         //mc=使用者輸入下多少錢      a=使用者輸入猜的數字     A、B分別為中多少A多少B      a1=a的第一位數      ans1=答案的第一位數     number=猜的次數     nowmon=使用者現在擁有的金額
@@ -86,7 +86,7 @@
 
             var x = document.createElement("h3");
             if (A == 4) {
-                var t = document.createTextNode("恭喜答對");
+                var t = document.createTextNode("Bingo");
                 x.className = "ABclass"
                 x.appendChild(t);
                 document.body.appendChild(x);//停止程式
@@ -107,9 +107,9 @@
 
                 document.getElementById('money').removeAttribute('readonly');
                 localStorage.setItem('usermoney', nowmon);
-                window.alert('恭喜答對');
-                document.write("您現在有" + nowmon + "元\n");
-                document.write("請重整頁面重新開始遊戲");
+                window.alert('Bingo');
+                document.write("Now you have" + nowmon + "dollar\n");
+                document.write("Please press F5 to start a new game !");
                 return;//重新開始
             }
             else {
@@ -167,7 +167,7 @@
             display: inline;
         }
 
-        #現在金額 {
+        #moneying {
             text-align: right;
             font-size: 28px;
             font-weight: bold;
